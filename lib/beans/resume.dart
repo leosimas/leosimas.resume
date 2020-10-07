@@ -7,8 +7,8 @@ import 'package:leosimas/beans/role.dart';
 import 'package:leosimas/beans/skill.dart';
 
 class Resume {
-
   final String pageTitle;
+  final String profilePic;
   final String name;
   final String fullName;
   final String title;
@@ -20,6 +20,17 @@ class Resume {
   final List<Job> jobs;
   final List<Skill> skills;
 
-  Resume({this.pageTitle, this.name, this.fullName, this.title, this.intro, this.roles, this.profiles, this.certificates, this.formation, this.jobs, this.skills});
-
+  Resume(
+      {this.pageTitle,
+      this.profilePic,
+      this.name,
+      this.fullName,
+      this.title,
+      this.intro,
+      this.roles,
+      this.profiles,
+      this.certificates,
+      this.formation,
+      this.jobs,
+      this.skills});
 }

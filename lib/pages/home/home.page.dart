@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leosimas/beans/resume.dart';
+import 'package:leosimas/components/certificate_card.dart';
 import 'package:leosimas/components/header.dart';
 import 'package:leosimas/resources/dimens.dart';
 import 'package:leosimas/resources/profile.dart';
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(avatarHalfSize),
         child: Image.network(
-          'http://2.gravatar.com/avatar/80198277459d874faecd8152e4fb83a4',
+          ResumeData.main.profilePic,
           height: widget._avatarSize,
           width: widget._avatarSize,
         ),
@@ -64,7 +65,9 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           Dimens.margin(size: Dimens.LARGE),
-          Text(ResumeData.main.intro, style: TextStyle(fontSize: Dimens.FONT_MEDIUM))
+          Text(ResumeData.main.intro, style: TextStyle(fontSize: Dimens.FONT_MEDIUM)),
+          Dimens.margin(size: Dimens.LARGE),
+          ...ResumeData.main.certificates.map((c) => CertificateCard(certificate: c)).toList()
         ],
       ),
     );

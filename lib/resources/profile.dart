@@ -1,3 +1,4 @@
+import 'package:leosimas/beans/certificate.dart';
 import 'package:leosimas/beans/resume.dart';
 import 'package:leosimas/beans/role.dart';
 
@@ -5,6 +6,7 @@ class ResumeData {
 
   static final main = Resume(
     pageTitle: "Leonardo Simas - Mobile Developer",
+    profilePic: 'http://2.gravatar.com/avatar/80198277459d874faecd8152e4fb83a4',
     name: "Leonardo",
     fullName: "Leonardo Simas Gonçalves",
     title: "Mobile Developer",
@@ -12,7 +14,11 @@ class ResumeData {
     roles: [
       Role("Analista de Sistemas - Mobile", "Experiência na atuação como líder técnico e tutor de equipes mobiles. Experiência em análise e desenvolvimento de aplicações móveis, além de elaboração de arquitetura das soluções. Desenvolvimento de soluções nativas para Android e iOS, integração a serviços Web, Android NDK e personalização do sistema operacional Android. Desenvolvimento em tecnologias híbridas: Flutter e Ionic, para Androide iOS.")
     ],
-
+    profiles: [],
+    certificates: [
+      Certificate("Associate Android Developer", "Google Certified", CertificateImage.android, "https://www.credential.net/r358j69n"),
+      Certificate("iOS Developer Nanodegree", "Udacity", CertificateImage.ios, "assets/certifications/ios_nanodegree_leo.pdf"),
+    ]
   );
 
   static final dynamic data = {
