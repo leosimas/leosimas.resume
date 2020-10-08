@@ -7,8 +7,8 @@ class Images {
 
   static String getCertificate(CertificateImage certificateImage) {
     switch(certificateImage) {
-      case CertificateImage.android: return "images/certified_aad.png";
-      case CertificateImage.ios: return "images/udacity.png";
+      case CertificateImage.android: return "assets/images/certified_aad.png";
+      case CertificateImage.ios: return "assets/images/udacity.png";
     }
   }
 
