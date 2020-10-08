@@ -10,7 +10,7 @@ class ResumeData {
 
   static final main = Resume(
     pageTitle: "Leonardo Simas - Mobile Developer",
-    profilePic: 'http://2.gravatar.com/avatar/80198277459d874faecd8152e4fb83a4',
+    profilePic: 'https://2.gravatar.com/avatar/80198277459d874faecd8152e4fb83a4',
     name: "Leonardo",
     fullName: "Leonardo Simas Gonçalves",
     title: "Mobile Developer",
