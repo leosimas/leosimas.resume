@@ -17,6 +17,7 @@ class _WorkPageState extends State<WorkPage> {
       child: Column(
         children: [
           _buildRoleCard(),
+          Dimens.margin(),
           Text("Experiência", textAlign: TextAlign.center, style: Styles.TITLE_2),
           Dimens.margin(),
           _buildJobCards(),

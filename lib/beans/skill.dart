@@ -5,9 +5,9 @@ class Skill {
   Skill(this.name, this.value);
 }
 
-class SkillCaregory {
+class SkillCategory {
   final String name;
   final List<Skill> list;
 
-  SkillCaregory(this.name, this.list);
+  SkillCategory(this.name, this.list);
 }

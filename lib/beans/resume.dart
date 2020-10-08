@@ -17,7 +17,7 @@ class Resume {
   final List<Certificate> certificates;
   final List<Formation> formation;
   final List<Job> jobs;
-  final List<Skill> skills;
+  final List<SkillCategory> skills;
 
   Resume(
       {this.pageTitle,
