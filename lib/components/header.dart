@@ -8,6 +8,9 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final width = MediaQuery.of(context).size.width;
+
     return Container(
       padding: EdgeInsets.all(Dimens.MEDIUM),
       height: HEIGHT,
@@ -16,7 +19,7 @@ class Header extends StatelessWidget {
       child: Container(
         child: Center(
           child: Text(
-            ResumeData.main.name + " - " + ResumeData.main.title,
+            ResumeData.main.name + ( width > 600 ? " - "+ ResumeData.main.title : "" ),
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontSize: Dimens.FONT_XLARGE, fontWeight: FontWeight.bold),
           ),
