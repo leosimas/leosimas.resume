@@ -28,7 +28,7 @@ class ResumeData {
     ],
     certificates: [
       Certificate("Associate Android Developer", "Google Certified", CertificateImage.android, "https://www.credential.net/r358j69n"),
-      Certificate("iOS Developer Nanodegree", "Udacity", CertificateImage.ios, "assets/certifications/ios_nanodegree_leo.pdf"),
+      Certificate("iOS Developer Nanodegree", "Udacity", CertificateImage.ios, "https://raw.githubusercontent.com/leosimas/leosimas.github.io/master/assets/assets/certifications/ios_nanodegree_leo.pdf"),
     ],
     jobs: [
       Job("Especialista Mobile", "Capgemini", "2019 - atual", current: true),
