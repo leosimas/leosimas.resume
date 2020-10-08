@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:leosimas/components/header.dart';
 import 'package:leosimas/pages/home/home.page.dart';
+import 'package:leosimas/pages/work/work.page.dart';
+import 'package:leosimas/resources/dimens.dart';
+import 'package:leosimas/resources/profile.dart';
 
 class MainPage extends StatefulWidget {
+  final _avatarSize = 80.0;
+
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -16,13 +22,11 @@ class TabItem {
 
 class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin {
 
-  static const _MAX_WIDTH = 800.0;
-
   List<TabItem> _tabItems = [
     TabItem(Icons.email, 'Home', HomePage()),
-    TabItem(Icons.work, 'XP', HomePage()),
-    TabItem(Icons.leaderboard, 'Skills', HomePage()),
-    TabItem(Icons.email, 'Contact', HomePage()),
+    TabItem(Icons.work, 'XP', WorkPage()),
+    TabItem(Icons.leaderboard, 'Skills', WorkPage()),
+    TabItem(Icons.email, 'Contact', WorkPage()),
   ];
   int _currentIndex = 0;
   TabController _tabController;
@@ -52,11 +56,29 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body: TabBarView(
-        controller: _tabController,
-        children: _tabItems.map((t) => t.page).toList(),
+      body: Stack(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Header(),
+              Dimens.margin(size: Dimens.XLARGE),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: _tabItems.map((t) => t.page).toList(),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          _buildAvatar(),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: true,
@@ -66,9 +88,23 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
         unselectedItemColor: Theme.of(context).unselectedWidgetColor,
         onTap: _onTabTapped,
         currentIndex: _currentIndex,
-        items: _tabItems
-            .map((t) => BottomNavigationBarItem(label: t.title, icon: Icon(t.icon)))
-            .toList(),
+        items: _tabItems.map((t) => BottomNavigationBarItem(label: t.title, icon: Icon(t.icon))).toList(),
+      ),
+    );
+  }
+
+  _buildAvatar() {
+    final avatarHalfSize = widget._avatarSize / 2;
+
+    return Container(
+      margin: EdgeInsets.only(left: Dimens.MEDIUM, top: avatarHalfSize),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(avatarHalfSize),
+        child: Image.network(
+          ResumeData.main.profilePic,
+          height: widget._avatarSize,
+          width: widget._avatarSize,
+        ),
       ),
     );
   }

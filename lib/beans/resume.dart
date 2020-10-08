@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:leosimas/beans/certificate.dart';
+import 'package:leosimas/beans/formation.dart';
 import 'package:leosimas/beans/job.dart';
 import 'package:leosimas/beans/profile.dart';
-import 'package:leosimas/beans/formation.dart';
 import 'package:leosimas/beans/role.dart';
 import 'package:leosimas/beans/skill.dart';
 
@@ -13,7 +12,7 @@ class Resume {
   final String fullName;
   final String title;
   final String intro;
-  final List<Role> roles;
+  final Role role;
   final List<Profile> profiles;
   final List<Certificate> certificates;
   final List<Formation> formation;
@@ -27,7 +26,7 @@ class Resume {
       this.fullName,
       this.title,
       this.intro,
-      this.roles,
+      this.role,
       this.profiles,
       this.certificates,
       this.formation,

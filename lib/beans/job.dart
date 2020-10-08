@@ -3,8 +3,8 @@ class Job {
   final String title;
   final String company;
   final String period;
-  bool current = false;
+  final bool current;
 
-  Job(this.title, this.company, this.period, {this.current});
+  Job(this.title, this.company, this.period, {this.current : false});
 
 }

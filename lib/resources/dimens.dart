@@ -12,6 +12,7 @@ class Dimens {
   static const FONT_SMALL = 12.0;
   static const FONT_MEDIUM = 16.0;
   static const FONT_LARGE = 24.0;
+  static const FONT_XLARGE = 28.0;
 
   static const BUTTON_HEIGHT = XLARGE;
 

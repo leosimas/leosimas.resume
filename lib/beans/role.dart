@@ -1,8 +1,8 @@
 class Role {
 
   final String title;
-  final String text;
+  final List<String> items;
 
-  Role(this.title, this.text);
+  Role(this.title, this.items);
 
 }

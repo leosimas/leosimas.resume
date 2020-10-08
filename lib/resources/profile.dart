@@ -1,4 +1,5 @@
 import 'package:leosimas/beans/certificate.dart';
+import 'package:leosimas/beans/job.dart';
 import 'package:leosimas/beans/resume.dart';
 import 'package:leosimas/beans/role.dart';
 
@@ -11,13 +12,27 @@ class ResumeData {
     fullName: "Leonardo Simas Gonçalves",
     title: "Mobile Developer",
     intro: "Sou Leonardo, analista de sistemas focado em mobile.\nAdoro atuar em projetos Android e iOS com tecnologias nativas e híbridas também.",
-    roles: [
-      Role("Analista de Sistemas - Mobile", "Experiência na atuação como líder técnico e tutor de equipes mobiles. Experiência em análise e desenvolvimento de aplicações móveis, além de elaboração de arquitetura das soluções. Desenvolvimento de soluções nativas para Android e iOS, integração a serviços Web, Android NDK e personalização do sistema operacional Android. Desenvolvimento em tecnologias híbridas: Flutter e Ionic, para Androide iOS.")
-    ],
+    role: Role("Developer - Mobile", [
+      "Experiência na atuação como líder técnico e tutor de equipes mobile.",
+      "Experiência em análise e desenvolvimento de aplicações móveis, além de elaboração de arquitetura das soluções.",
+      "Desenvolvimento de soluções nativas para Android e iOS, integração a serviços Web, Android NDK e personalização do sistema operacional Android.",
+      "Desenvolvimento em tecnologias híbridas: Flutter e Ionic, para Android e iOS."
+    ]),
     profiles: [],
     certificates: [
       Certificate("Associate Android Developer", "Google Certified", CertificateImage.android, "https://www.credential.net/r358j69n"),
       Certificate("iOS Developer Nanodegree", "Udacity", CertificateImage.ios, "assets/certifications/ios_nanodegree_leo.pdf"),
+    ],
+    jobs: [
+      Job("Especialista Mobile", "Capgemini", "2019 - atual", current: true),
+      Job("Analista de Sistemas Sênior", "Capgemini", "2017 - 2019"),
+      Job("Analista de Sistemas Pleno", "Capgemini", "2014 - 2017"),
+      Job("Analista de Sistemas Júnior", "MTM Tecnologia", "2014"),
+      Job("Programador", "SENAI", "2013 - 2014"),
+      Job("Programador", "CPTec - UNEB", "2012 - 2013"),
+      Job("Programador", "Instituto Recôncavo de Tecnologia", "2011 - 2012"),
+      Job("Estagiário", "Instituto Recôncavo de Tecnologia", "2010 - 2011"),
+      Job("Desenvolvedor", "Consult Jr. - UNEB", "2008 - 2010"),
     ]
   );
 

@@ -8,6 +8,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
+  static const _MAX_WIDTH = 800.0;
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -31,11 +34,11 @@ class MyApp extends StatelessWidget {
       ),
       home: LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth > 800) {
-            final margin = (constraints.maxWidth - 800) / 2;
+          if (constraints.maxWidth > _MAX_WIDTH) {
+            final margin = (constraints.maxWidth - _MAX_WIDTH) / 2;
             return Container(
               padding: EdgeInsets.only(left:margin, right: margin),
-              color: Colors.black26,
+              color: Colors.black45,
               child: MainPage(),
             );
           }

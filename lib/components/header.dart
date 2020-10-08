@@ -14,12 +14,11 @@ class Header extends StatelessWidget {
       width: double.infinity,
       color: Colors.blue,
       child: Container(
-//        margin: EdgeInsets.only(left: marginLeft + Dimens.MEDIUM),
         child: Center(
           child: Text(
             ResumeData.main.name + " - " + ResumeData.main.title,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontSize: Dimens.FONT_LARGE, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.white, fontSize: Dimens.FONT_XLARGE, fontWeight: FontWeight.bold),
           ),
         ),
       ),
