@@ -16,7 +16,8 @@ class ProfilesPage extends StatefulWidget {
 class _ProfilesPageState extends State<ProfilesPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Container(
+      padding: EdgeInsets.all(Dimens.MEDIUM),
       child: Column(
         children: [..._buildCards(context)],
       ),

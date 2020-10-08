@@ -9,11 +9,14 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final width = MediaQuery.of(context).size.width;
+    final media = MediaQuery.of(context);
+    final width = media.size.width;
+    final statusBarHeight = media.padding.top;
+    final pad = Dimens.MEDIUM;
 
     return Container(
-      padding: EdgeInsets.all(Dimens.MEDIUM),
-      height: HEIGHT,
+      padding: EdgeInsets.fromLTRB(pad, statusBarHeight + pad, pad, pad),
+      height: HEIGHT + statusBarHeight,
       width: double.infinity,
       color: Colors.blue,
       child: Container(

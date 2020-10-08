@@ -42,7 +42,7 @@ class _SkillsPageState extends State<SkillsPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(f.title, style: TextStyle(fontWeight: FontWeight.bold)),
+                      Flexible(child: Text(f.title, style: TextStyle(fontWeight: FontWeight.bold))),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Container(

@@ -95,7 +95,8 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   }
 
   Widget _buildAvatar() {
-    final avatarHalfSize = widget._avatarSize / 2;
+    final media = MediaQuery.of(context);
+    final avatarHalfSize = (Dimens.MEDIUM + media.padding.top + widget._avatarSize) / 2;
 
     return Container(
       margin: EdgeInsets.only(left: Dimens.MEDIUM, top: avatarHalfSize),

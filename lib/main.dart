@@ -8,7 +8,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   static const _MAX_WIDTH = 800.0;
 
   // This widget is the root of your application.
@@ -20,18 +19,22 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.maxWidth > _MAX_WIDTH) {
-            final margin = (constraints.maxWidth - _MAX_WIDTH) / 2;
-            return Container(
-              padding: EdgeInsets.only(left:margin, right: margin),
-              color: Colors.black45,
-              child: MainPage(),
-            );
-          }
-          return MainPage();
-        },
+      home: SafeArea(
+        top: false,
+        bottom: true,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth > _MAX_WIDTH) {
+              final margin = (constraints.maxWidth - _MAX_WIDTH) / 2;
+              return Container(
+                padding: EdgeInsets.only(left: margin, right: margin),
+                color: Colors.black45,
+                child: MainPage(),
+              );
+            }
+            return MainPage();
+          },
+        ),
       ),
     );
   }
