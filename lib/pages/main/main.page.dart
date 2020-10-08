@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:leosimas/components/header.dart';
 import 'package:leosimas/pages/home/home.page.dart';
+import 'package:leosimas/pages/profiles/profiles.page.dart';
+import 'package:leosimas/pages/skills/skills.page.dart';
 import 'package:leosimas/pages/work/work.page.dart';
 import 'package:leosimas/resources/dimens.dart';
 import 'package:leosimas/resources/profile.dart';
@@ -25,8 +27,8 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   List<TabItem> _tabItems = [
     TabItem(Icons.email, 'Home', HomePage()),
     TabItem(Icons.work, 'XP', WorkPage()),
-    TabItem(Icons.leaderboard, 'Skills', WorkPage()),
-    TabItem(Icons.email, 'Contact', WorkPage()),
+    TabItem(Icons.leaderboard, 'Skills', SkillsPage()),
+    TabItem(Icons.email, 'Profiles', ProfilesPage()),
   ];
   int _currentIndex = 0;
   TabController _tabController;
@@ -64,14 +66,13 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Header(),
-              Dimens.margin(size: Dimens.XLARGE),
               Expanded(
                 flex: 1,
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   child: TabBarView(
                     controller: _tabController,
-                    children: _tabItems.map((t) => t.page).toList(),
+                    children: _tabItems.map((t) => _buildPage(t)).toList(),
                   ),
                 ),
               ),
@@ -93,7 +94,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
     );
   }
 
-  _buildAvatar() {
+  Widget _buildAvatar() {
     final avatarHalfSize = widget._avatarSize / 2;
 
     return Container(
@@ -105,6 +106,17 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
           height: widget._avatarSize,
           width: widget._avatarSize,
         ),
+      ),
+    );
+  }
+
+  Widget _buildPage(TabItem tabItem) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Dimens.margin(size: Dimens.XLARGE),
+          tabItem.page
+        ],
       ),
     );
   }

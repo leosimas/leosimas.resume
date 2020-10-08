@@ -12,18 +12,15 @@ class WorkPage extends StatefulWidget {
 class _WorkPageState extends State<WorkPage> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        padding: EdgeInsets.all(Dimens.MEDIUM),
-        child: Column(
-          children: [
-            _buildRoleCard(),
-
-            Text("Experiência", textAlign: TextAlign.center, style: Styles.TITLE_2),
-            Dimens.margin(),
-            _buildJobCards(),
-          ],
-        ),
+    return Container(
+      padding: EdgeInsets.all(Dimens.MEDIUM),
+      child: Column(
+        children: [
+          _buildRoleCard(),
+          Text("Experiência", textAlign: TextAlign.center, style: Styles.TITLE_2),
+          Dimens.margin(),
+          _buildJobCards(),
+        ],
       ),
     );
   }
@@ -50,9 +47,10 @@ class _WorkPageState extends State<WorkPage> {
     List<Widget> experienceItems = [];
 
     ResumeData.main.jobs.asMap().forEach((index, job) {
-      experienceItems.add(JobCard(job: job,));
-      if (index < ResumeData.main.jobs.length - 1)
-        experienceItems.add(Dimens.margin());
+      experienceItems.add(JobCard(
+        job: job,
+      ));
+      if (index < ResumeData.main.jobs.length - 1) experienceItems.add(Dimens.margin());
     });
 
     return Column(
