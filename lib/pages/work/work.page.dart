@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leosimas/components/job_card.dart';
+import 'package:leosimas/locale/locale_controller.dart';
+import 'package:leosimas/resources/app_strings.dart';
 import 'package:leosimas/resources/dimens.dart';
 import 'package:leosimas/resources/profile.dart';
 import 'package:leosimas/resources/styles.dart';
@@ -12,29 +14,32 @@ class WorkPage extends StatefulWidget {
 class _WorkPageState extends State<WorkPage> {
   @override
   Widget build(BuildContext context) {
+    final strings = AppStrings.of(context);
+    final resume = ResumeData.forLocale(LocaleProvider.localeOf(context));
+
     return Container(
       padding: EdgeInsets.all(Dimens.MEDIUM),
       child: Column(
         children: [
-          _buildRoleCard(),
+          _buildRoleCard(resume),
           Dimens.margin(),
-          Text("Experiência", textAlign: TextAlign.center, style: Styles.TITLE_2),
+          Text(strings.sectionExperience, textAlign: TextAlign.center, style: Styles.TITLE_2),
           Dimens.margin(),
-          _buildJobCards(),
+          _buildJobCards(resume),
         ],
       ),
     );
   }
 
-  _buildRoleCard() {
-    List<Widget> roleItems = ResumeData.main.role.items.map((e) => Text("- " + e)).toList();
+  Widget _buildRoleCard(resume) {
+    final List<Widget> roleItems = resume.role.items.map<Widget>((e) => Text('- $e')).toList();
     return Card(
       child: Container(
         padding: EdgeInsets.all(Dimens.MEDIUM),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(ResumeData.main.role.title, textAlign: TextAlign.center, style: Styles.TITLE_2),
+            Text(resume.role.title, textAlign: TextAlign.center, style: Styles.TITLE_2),
             Dimens.margin(),
             ...roleItems,
             Dimens.margin(),
@@ -44,14 +49,12 @@ class _WorkPageState extends State<WorkPage> {
     );
   }
 
-  _buildJobCards() {
-    List<Widget> experienceItems = [];
+  Widget _buildJobCards(resume) {
+    final List<Widget> experienceItems = [];
 
-    ResumeData.main.jobs.asMap().forEach((index, job) {
-      experienceItems.add(JobCard(
-        job: job,
-      ));
-      if (index < ResumeData.main.jobs.length - 1) experienceItems.add(Dimens.margin());
+    resume.jobs.asMap().forEach((index, job) {
+      experienceItems.add(JobCard(job: job));
+      if (index < resume.jobs.length - 1) experienceItems.add(Dimens.margin());
     });
 
     return Column(

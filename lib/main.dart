@@ -1,39 +1,68 @@
 import 'package:flutter/material.dart';
-import 'package:leosimas/resources/profile.dart';
-
-import 'pages/main/main.page.dart';
+import 'package:leosimas/locale/locale_controller.dart';
+import 'package:leosimas/pages/main/main.page.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  static const _MAX_WIDTH = 800.0;
+Locale _detectLocale() {
+  final lang = WidgetsBinding.instance.platformDispatcher.locale.languageCode;
+  return lang == 'pt' ? const Locale('pt') : const Locale('en');
+}
 
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  static const _maxWidth = 800.0;
+
+  late final LocaleController _localeController;
+
+  @override
+  void initState() {
+    super.initState();
+    _localeController = LocaleController(_detectLocale());
+    _localeController.addListener(_onLocaleChanged);
+  }
+
+  @override
+  void dispose() {
+    _localeController.removeListener(_onLocaleChanged);
+    _localeController.dispose();
+    super.dispose();
+  }
+
+  void _onLocaleChanged() => setState(() {});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: ResumeData.main.pageTitle,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: SafeArea(
-        top: false,
-        bottom: true,
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            if (constraints.maxWidth > _MAX_WIDTH) {
-              final margin = (constraints.maxWidth - _MAX_WIDTH) / 2;
-              return Container(
-                padding: EdgeInsets.only(left: margin, right: margin),
-                color: Colors.black45,
-                child: MainPage(),
-              );
-            }
-            return MainPage();
-          },
+    return LocaleProvider(
+      controller: _localeController,
+      child: MaterialApp(
+        title: 'Leonardo Simas - Mobile Developer',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: SafeArea(
+          top: false,
+          bottom: true,
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth > _maxWidth) {
+                final margin = (constraints.maxWidth - _maxWidth) / 2;
+                return Container(
+                  padding: EdgeInsets.only(left: margin, right: margin),
+                  color: Colors.black45,
+                  child: MainPage(),
+                );
+              }
+              return MainPage();
+            },
+          ),
         ),
       ),
     );

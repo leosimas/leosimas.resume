@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:leosimas/beans/profile.dart';
+import 'package:leosimas/locale/locale_controller.dart';
+import 'package:leosimas/resources/app_strings.dart';
 import 'package:leosimas/resources/dimens.dart';
 import 'package:leosimas/resources/images.dart';
 import 'package:leosimas/resources/profile.dart';
-import 'package:leosimas/resources/strings.dart';
 import 'package:leosimas/resources/styles.dart';
 import 'package:leosimas/utils/app.utils.dart';
 
@@ -24,11 +25,12 @@ class _ProfilesPageState extends State<ProfilesPage> {
   }
 
   List<Widget> _buildCards(BuildContext context) {
-    List<Widget> list = [];
-
+    final List<Widget> list = [];
     final theme = Theme.of(context);
+    final strings = AppStrings.of(context);
+    final resume = ResumeData.forLocale(LocaleProvider.localeOf(context));
 
-    ResumeData.main.profiles.asMap().forEach((index, item) {
+    resume.profiles.asMap().forEach((index, item) {
       list.add(SizedBox(
         width: 400,
         child: Card(
@@ -38,27 +40,35 @@ class _ProfilesPageState extends State<ProfilesPage> {
               children: [
                 Images.getIcon(item, 80),
                 Dimens.margin(size: Dimens.SMALL),
-                Text(Strings.getProfileName(item), style: Styles.TITLE_3),
+                Text(_getProfileName(item, strings), style: Styles.TITLE_3),
                 Dimens.margin(size: Dimens.SMALL),
                 TextButton(
-                    onPressed: () => _openProfile(item),
-                    child: Text(
-                      item.text,
-                      style: TextStyle(color: theme.primaryColor),
-                    ),
-                )
+                  onPressed: () => _openProfile(item),
+                  child: Text(item.text, style: TextStyle(color: theme.primaryColor)),
+                ),
               ],
             ),
           ),
         ),
       ));
 
-      if (index < ResumeData.main.profiles.length - 1) {
+      if (index < resume.profiles.length - 1) {
         list.add(Dimens.margin());
       }
     });
 
     return list;
+  }
+
+  String _getProfileName(Profile profile, AppStrings strings) {
+    switch (profile.type) {
+      case ProfileType.email:
+        return strings.profileEmail;
+      case ProfileType.linkedin:
+        return strings.profileLinkedIn;
+      case ProfileType.github:
+        return strings.profileGitHub;
+    }
   }
 
   void _openProfile(Profile profile) {

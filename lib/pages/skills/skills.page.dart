@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:leosimas/components/certificate_card.dart';
 import 'package:leosimas/components/skill_category_card.dart';
+import 'package:leosimas/locale/locale_controller.dart';
+import 'package:leosimas/resources/app_strings.dart';
 import 'package:leosimas/resources/dimens.dart';
 import 'package:leosimas/resources/profile.dart';
 import 'package:leosimas/resources/styles.dart';
@@ -13,25 +15,28 @@ class SkillsPage extends StatefulWidget {
 class _SkillsPageState extends State<SkillsPage> {
   @override
   Widget build(BuildContext context) {
+    final strings = AppStrings.of(context);
+    final resume = ResumeData.forLocale(LocaleProvider.localeOf(context));
+
     return Container(
       padding: EdgeInsets.all(Dimens.MEDIUM),
       child: Column(
         children: [
-          ..._buildFormation(),
+          ..._buildFormation(context, strings, resume),
           Dimens.margin(),
-          ..._buildCertificates(),
+          ..._buildCertificates(strings, resume),
           Dimens.margin(),
-          ..._buildSkills(),
+          ..._buildSkills(strings, resume),
         ],
       ),
     );
   }
 
-  List<Widget> _buildFormation() {
+  List<Widget> _buildFormation(BuildContext context, AppStrings strings, resume) {
     return [
-      Text("Formação", textAlign: TextAlign.center, style: Styles.TITLE_2),
+      Text(strings.sectionEducation, textAlign: TextAlign.center, style: Styles.TITLE_2),
       Dimens.margin(),
-      ...ResumeData.main.formation.map((f) {
+      ...resume.formation.map<Widget>((f) {
         return SizedBox(
           width: 400,
           child: Card(
@@ -53,29 +58,29 @@ class _SkillsPageState extends State<SkillsPage> {
                             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: Dimens.FONT_SMALL),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Dimens.margin(),
-                  Text(f.institute)
+                  Text(f.institute),
                 ],
               ),
             ),
           ),
         );
-      }).toList()
+      }).toList(),
     ];
   }
 
-  List<Widget> _buildCertificates() {
-    List<Widget> list = [
-      Text("Certificações", textAlign: TextAlign.center, style: Styles.TITLE_2),
+  List<Widget> _buildCertificates(AppStrings strings, resume) {
+    final List<Widget> list = [
+      Text(strings.sectionCertifications, textAlign: TextAlign.center, style: Styles.TITLE_2),
       Dimens.margin(),
     ];
 
-    ResumeData.main.certificates.asMap().forEach((index, element) {
-      list.add(CertificateCard(certificate: element, mini: true,));
-      if (index < ResumeData.main.certificates.length-1) {
+    resume.certificates.asMap().forEach((index, element) {
+      list.add(CertificateCard(certificate: element, mini: true));
+      if (index < resume.certificates.length - 1) {
         list.add(Dimens.margin());
       }
     });
@@ -83,16 +88,15 @@ class _SkillsPageState extends State<SkillsPage> {
     return list;
   }
 
-  List<Widget> _buildSkills() {
-    List<Widget> list = [
-      Text("Habilidades", textAlign: TextAlign.center, style: Styles.TITLE_2),
+  List<Widget> _buildSkills(AppStrings strings, resume) {
+    final List<Widget> list = [
+      Text(strings.sectionSkills, textAlign: TextAlign.center, style: Styles.TITLE_2),
       Dimens.margin(),
     ];
 
-    ResumeData.main.skills.asMap().forEach((index, category) {
+    resume.skills.asMap().forEach((index, category) {
       list.add(SkillCategoryCard(category: category));
-
-      if (index < ResumeData.main.certificates.length) {
+      if (index < resume.skills.length - 1) {
         list.add(Dimens.margin());
       }
     });
