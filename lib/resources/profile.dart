@@ -31,7 +31,9 @@ class ResumeData {
       Certificate("iOS Developer Nanodegree", "Udacity", CertificateImage.ios, "https://raw.githubusercontent.com/leosimas/leosimas.github.io/master/assets/assets/certifications/ios_nanodegree_leo.pdf"),
     ],
     jobs: [
-      Job("Especialista Mobile", "Capgemini", "2019 - atual", current: true),
+      Job("Desenvolvedor Master", "CI&T", "2025 - atual", current: true),
+      Job("Analista de Sistemas Sênior", "CI&T", "2021 - 2025"),
+      Job("Especialista Multiplataforma", "Capgemini", "2019 - 2021"),
       Job("Analista de Sistemas Sênior", "Capgemini", "2017 - 2019"),
       Job("Analista de Sistemas Pleno", "Capgemini", "2014 - 2017"),
       Job("Analista de Sistemas Júnior", "MTM Tecnologia", "2014"),
@@ -55,7 +57,7 @@ class ResumeData {
       ]),
       SkillCategory("Programação", [
         Skill("Java", 90),
-        Skill("Kotlin", 80),
+        Skill("Kotlin", 90),
         Skill("Swift", 80),
         Skill("JavaScript", 70),
         Skill("TypeScript", 70),
