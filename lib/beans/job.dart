@@ -5,6 +5,6 @@ class Job {
   final String period;
   final bool current;
 
-  Job(this.title, this.company, this.period, {this.current : false});
+  Job(this.title, this.company, this.period, {this.current = false});
 
 }

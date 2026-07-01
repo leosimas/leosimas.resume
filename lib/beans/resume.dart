@@ -19,17 +19,18 @@ class Resume {
   final List<Job> jobs;
   final List<SkillCategory> skills;
 
-  Resume(
-      {this.pageTitle,
-      this.profilePic,
-      this.name,
-      this.fullName,
-      this.title,
-      this.intro,
-      this.role,
-      this.profiles,
-      this.certificates,
-      this.formation,
-      this.jobs,
-      this.skills});
+  Resume({
+    required this.pageTitle,
+    required this.profilePic,
+    required this.name,
+    required this.fullName,
+    required this.title,
+    required this.intro,
+    required this.role,
+    required this.profiles,
+    required this.certificates,
+    required this.formation,
+    required this.jobs,
+    required this.skills,
+  });
 }

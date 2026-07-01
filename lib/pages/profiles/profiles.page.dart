@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:leosimas/beans/profile.dart';
 import 'package:leosimas/resources/dimens.dart';
@@ -41,7 +40,7 @@ class _ProfilesPageState extends State<ProfilesPage> {
                 Dimens.margin(size: Dimens.SMALL),
                 Text(Strings.getProfileName(item), style: Styles.TITLE_3),
                 Dimens.margin(size: Dimens.SMALL),
-                FlatButton(
+                TextButton(
                     onPressed: () => _openProfile(item),
                     child: Text(
                       item.text,

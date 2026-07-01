@@ -16,7 +16,7 @@ class Dimens {
 
   static const BUTTON_HEIGHT = XLARGE;
 
-  static SizedBox margin({size : MEDIUM}) {
+  static SizedBox margin({double size = MEDIUM}) {
     return SizedBox(height: size, width: size,);
   }
 

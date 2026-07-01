@@ -46,7 +46,7 @@ class _SkillsPageState extends State<SkillsPage> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Container(
-                          color: Theme.of(context).accentColor,
+                          color: Theme.of(context).colorScheme.secondary,
                           padding: EdgeInsets.all(4),
                           child: Text(
                             f.year.toString(),

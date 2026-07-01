@@ -1,16 +1,45 @@
-# leosimas
+# leosimas.resume
 
-A new Flutter project.
+Personal resume website built with Flutter Web.
 
-## Getting Started
+## Prerequisites
 
-This project is a starting point for a Flutter application.
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) with web support enabled
+- Chrome browser
 
-A few resources to get you started if this is your first Flutter project:
+Verify Flutter is ready:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```bash
+flutter doctor
+flutter config --enable-web
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Running locally
+
+```bash
+flutter pub get
+flutter run -d chrome
+```
+
+The app opens automatically in Chrome with hot-reload enabled.
+
+To run on a specific port:
+
+```bash
+flutter run -d chrome --web-port 8080
+```
+
+## Building for release
+
+```bash
+flutter build web --release
+```
+
+The output is placed in `build/web/`. Deploy that directory to any static hosting provider (GitHub Pages, Firebase Hosting, Netlify, etc.).
+
+### GitHub Pages example
+
+```bash
+flutter build web --release --base-href /leosimas.resume/
+# then push build/web/ contents to the gh-pages branch
+```

@@ -31,7 +31,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
     TabItem(Icons.email, 'Profiles', ProfilesPage()),
   ];
   int _currentIndex = 0;
-  TabController _tabController;
+  late TabController _tabController;
 
   void initState() {
     super.initState();

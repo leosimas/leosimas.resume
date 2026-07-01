@@ -5,7 +5,7 @@ import 'package:leosimas/resources/dimens.dart';
 class JobCard extends StatelessWidget {
   final Job job;
 
-  const JobCard({Key key, this.job}) : super(key: key);
+  const JobCard({super.key, required this.job});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class JobCard extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Container(
-                      color: Theme.of(context).accentColor,
+                      color: Theme.of(context).colorScheme.secondary,
                       padding: EdgeInsets.all(4),
                       child: Text(
                         job.period,

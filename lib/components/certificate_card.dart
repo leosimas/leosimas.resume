@@ -8,7 +8,7 @@ class CertificateCard extends StatelessWidget {
   final Certificate certificate;
   final bool mini;
 
-  const CertificateCard({Key key, this.certificate, this.mini: false}) : super(key: key);
+  const CertificateCard({super.key, required this.certificate, this.mini = false});
 
   @override
   Widget build(BuildContext context) {

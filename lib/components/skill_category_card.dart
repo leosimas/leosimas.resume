@@ -7,7 +7,7 @@ class SkillCategoryCard extends StatelessWidget {
 
   final SkillCategory category;
 
-  const SkillCategoryCard({Key key, this.category}) : super(key: key);
+  const SkillCategoryCard({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class SkillCategoryCard extends StatelessWidget {
             child: FractionallySizedBox(
               widthFactor: item.value / 100,
               child: Container(
-                color: theme.accentColor,
+                color: theme.colorScheme.secondary,
               ),
             ),
           ),
